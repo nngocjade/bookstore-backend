@@ -4,6 +4,9 @@ var app = express();
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const passport = require("passport");
+require("./middlewares/passport");
+var cors = require("cors");
 
 var indexRouter = require("./routes/index");
 
@@ -28,11 +31,12 @@ mongoose
 
 const db = mongoose.connection;
 
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
@@ -40,5 +44,6 @@ app.use("/authors", authorsRouter);
 app.use("/books", booksRouter);
 app.use("/genres", genresRouter);
 app.use("/auth", authRouter);
+app.use(passport.initialize());
 
 module.exports = app;

@@ -14,10 +14,11 @@ function App() {
     email: " ",
     password: " ",
   });
-  const oauthLogin = async (user, authProvider) => {
-    const access_token = user.accessToken;
-    const url = `/api/auth/login/${authProvider}`;
-    const res = await api.post(url, { access_token, user });
+  const oauthLogin = async (u, authProvider) => {
+    console.log("user", u);
+    const access_token = u.accessToken;
+    const url = `/auth/login/${authProvider}`;
+    const res = await api.post(url, { access_token, u });
     const newUser = res.data.user;
     if (newUser) {
       newUser.authenticated = true;
