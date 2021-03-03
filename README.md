@@ -1,4 +1,4 @@
-# Bookstore FullStack
+# Bookstore Backend
 
 Created with love by: Jade
 
@@ -13,4 +13,4 @@ npm install bcrypt
 npm install dotenv
 
 npm install jsonwebtoken
-"# bookstore-backend-frontend" 
+"# bookstore-backend-frontend"
