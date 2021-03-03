@@ -29,8 +29,6 @@ mongoose
   })
   .catch((err) => console.log("Could not connect to database!", err));
 
-const db = mongoose.connection;
-
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
